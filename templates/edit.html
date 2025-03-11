@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Match</title>
+</head>
+<body>
+    <h1>Edit Match</h1>
+    <form action="/edit_match/{{ match.id }}" method="post">
+        <input type="text" name="team1" value="{{ match.team1 }}" required>
+        <input type="text" name="team2" value="{{ match.team2 }}" required>
+        <input type="text" name="date" value="{{ match.date }}" required>
+        <input type="text" name="venue" value="{{ match.venue }}" required>
+        <input type="text" name="live_stream_link" value="{{ match.live_stream_link }}" required>
+        <button type="submit">Update Match</button>
+    </form>
+</body>
+</html>
