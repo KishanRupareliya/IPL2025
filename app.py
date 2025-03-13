@@ -9,6 +9,13 @@ cred = credentials.Certificate('serviceAccountKey.json')  # Add your Firebase cr
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+@app.route('/dashboard')
+def dashboard():
+    matches_ref = db.collection('matches')
+    matches = matches_ref.stream()
+    matches_list = [{**match.to_dict(), 'id': match.id} for match in matches]
+    return render_template('dashboard.html', matches=matches_list)
+
 @app.route('/')
 def home():
     matches_ref = db.collection('matches')

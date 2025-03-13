@@ -1,182 +1,3 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPL Fixtures</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>IPL Fixtures</h1>
-    <form action="/add_match" method="post">
-        <input type="text" name="team1" placeholder="Team 1" required>
-        <input type="text" name="team2" placeholder="Team 2" required>
-        <input type="text" name="date" placeholder="Date & Time" required>
-        <input type="text" name="venue" placeholder="Venue" required>
-        <input type="text" name="live_stream_link" placeholder="Live Stream Link" required>
-        <button type="submit">Add Match</button>
-    </form>
-
-    <h2>Upcoming Matches</h2>
-    <ul>
-        {% for match in matches %}
-            <li>{{ match.team1 }} vs {{ match.team2 }} - {{ match.date }} at {{ match.venue }}
-                <a href="{{ match.live_stream_link }}" target="_blank">Watch Live</a>
-                <a href="/edit_match/{{ match.id }}">Edit</a>
-                <a href="/delete_match/{{ match.id }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
--->
-
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPL Fixtures</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h1, h2 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        input[type="text"] {
-            padding: 8px;
-            margin: 5px;
-            width: 200px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 8px 15px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        .fixtures-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .match-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-        }
-        .teams {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 20px 0;
-        }
-        .team {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .team img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-        }
-        .team span {
-            font-size: 14px;
-            color: #333;
-        }
-        .match-info {
-            margin-top: 20px;
-        }
-        .match-info p {
-            margin: 5px 0;
-            font-size: 14px;
-            color: #555;
-        }
-        .match-info a {
-            display: inline-block;
-            margin: 5px;
-            padding: 8px 15px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .match-info a:hover {
-            background-color: #0056b3;
-        }
-        .match-info a.delete {
-            background-color: #dc3545;
-        }
-        .match-info a.delete:hover {
-            background-color: #c82333;
-        }
-    </style>
-</head>
-<body>
-    <h1>IPL Fixtures</h1>
-    <form action="/add_match" method="post">
-        <input type="text" name="team1" placeholder="Team 1" required>
-        <input type="text" name="team2" placeholder="Team 2" required>
-        <input type="text" name="date" placeholder="Date & Time" required>
-        <input type="text" name="venue" placeholder="Venue" required>
-        <input type="text" name="live_stream_link" placeholder="Live Stream Link" required>
-        <button type="submit">Add Match</button>
-    </form>
-
-    <h2>Upcoming Matches</h2>
-    <div class="fixtures-container">
-        {% for match in matches %}
-            <div class="match-card">
-                <h3>{{ match.team1 }} vs {{ match.team2 }}</h3>
-                <div class="teams">
-                    <div class="team">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Kolkata_Knight_Riders_Logo.svg" alt="{{ match.team1 }} Logo">
-                        <span>{{ match.team1 }}</span>
-                    </div>
-                    <span>vs</span>
-                    <div class="team">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/2/2a/Royal_Challengers_Bangalore_2020.svg" alt="{{ match.team2 }} Logo">
-                        <span>{{ match.team2 }}</span>
-                    </div>
-                </div>
-                <div class="match-info">
-                    <p>Date: {{ match.date }}</p>
-                    <p>Venue: {{ match.venue }}</p>
-                    <a href="{{ match.live_stream_link }}" target="_blank">Watch Live</a>
-                    <a href="/edit_match/{{ match.id }}">Edit</a>
-                    <a href="/delete_match/{{ match.id }}" class="delete">Delete</a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</body>
-</html>
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -304,15 +125,24 @@
     </style>
 </head>
 <body>
+
+    <!-- Google AdSense Ad at the Top -->
+    <div style="text-align: center; margin: 20px auto;">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+                crossorigin="anonymous"></script>
+        <!-- Ad Unit -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
     <h1>IPL Fixtures</h1>
-    <form action="/add_match" method="post">
-        <input type="text" name="team1" placeholder="Team 1" required>
-        <input type="text" name="team2" placeholder="Team 2" required>
-        <input type="text" name="date" placeholder="Date & Time" required>
-        <input type="text" name="venue" placeholder="Venue" required>
-        <input type="text" name="live_stream_link" placeholder="Live Stream Link" required>
-        <button type="submit">Add Match</button>
-    </form>
 
     <h2>Upcoming Matches</h2>
     <!-- Filters for Team and Venue -->
@@ -357,8 +187,10 @@
                     <p>Date: {{ match.date }}</p>
                     <p>Venue: {{ match.venue }}</p>
                     <a href="{{ match.live_stream_link }}" target="_blank">Watch Live</a>
+                    <!--
                     <a href="/edit_match/{{ match.id }}">Edit</a>
                     <a href="/delete_match/{{ match.id }}" class="delete">Delete</a>
+                    -->
                 </div>
             </div>
         {% endfor %}
@@ -390,5 +222,24 @@
             });
         }
     </script>
+
+    <!-- Your existing content (filters, match cards, etc.) -->
+
+    <!-- Google AdSense Ad at the Bottom -->
+    <div style="text-align: center; margin: 20px auto;">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+                crossorigin="anonymous"></script>
+        <!-- Ad Unit -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
 </body>
 </html>
